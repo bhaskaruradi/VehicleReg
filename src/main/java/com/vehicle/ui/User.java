@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.vehicle.beans.Vehicle;
 import com.vehicle.service.VehicleService;
 import com.vehicle.service.VehicleServiceImpl;
+import com.vehicle.utility.Custom;
 
 public class User {
 
@@ -37,12 +38,22 @@ public class User {
     case 2:
     	    System.out.println(" enter vehicle no");
     	    String veh = (sc.next());
-    	    
+    	    if(veh.equals(v.getVehicleNo())) {
+    	    	  
+        	    Vehicle vc =vs.validityCheck(veh);
+        	    System.out.println("period is "+vc.getPeriod());
+        	    System.out.println(vc);
+    	    }
     	    	
-    	    
-    	    Vehicle vc =vs.validityCheck(veh);
-    	    System.out.println("period is "+vc.getPeriod());
-    	    System.out.println(vc);
+    	    else
+    	    {
+    	    	try {
+    	    		throw new Custom();
+    	    	}catch(Custom e) {};
+    	    	
+    	    	
+    	    }
+    	  
     	    
     }
 		
